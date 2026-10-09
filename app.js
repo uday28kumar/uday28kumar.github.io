@@ -18,8 +18,6 @@ function render(p) {
   p.projects.forEach(x => { const c = el('article', 'card'); c.append(el('h3', null, x.name), el('p', null, x.description)); const u = el('ul', 'tags'); (x.tech || []).forEach(t => u.append(el('li', null, t))); c.append(u);
     if (x.link) { const a = el('a', null, 'View project →'); a.href = x.link; a.rel = 'noopener'; c.append(a); } $('#projects-list').append(c); });
   p.education.forEach(x => { const c = el('div', 'card'); c.append(el('h3', null, x.degree), el('p', 'muted', `${x.institution} · ${x.period}`)); $('#edu-list').append(c); });
-  (p.languages || []).forEach(l => { const li = el('li'); li.append(el('span', null, l.name), el('span', 'muted', l.level || '')); $('#lang-list').append(li); });
-  (p.interests || []).forEach(i => $('#interest-list').append(el('li', null, i)));
   $('#availability').textContent = p.contact.availability || '';
   const m = $('#email'); m.textContent = `Email ${p.contact.email}`; m.href = `mailto:${p.contact.email.replace(/^\[PLACEHOLDER\]\s*/, '')}`;
   Object.entries(p.social || {}).forEach(([k, v]) => { if (!v) return; const li = el('li'); const a = el('a', null, k[0].toUpperCase() + k.slice(1)); a.href = v; a.rel = 'noopener'; li.append(a); $('#social').append(li); });
