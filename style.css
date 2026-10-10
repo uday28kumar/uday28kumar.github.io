@@ -54,3 +54,7 @@ h1{font-size:clamp(2.2rem,6vw,3.6rem);margin:.1em 0;line-height:1.1}h2{font-size
 
 mark.hl{background:none;color:inherit;font-weight:700;padding:0}
 .tags .yrs{color:var(--muted);opacity:.8;font-size:.92em;white-space:nowrap}
+
+.tags.primary{gap:10px;margin-bottom:10px}
+.tags .chip-pri{display:inline-flex;align-items:center;gap:8px;font-size:.92rem;padding:5px 8px 5px 14px;border:1.5px solid var(--acc);background:color-mix(in srgb,var(--acc) 10%,transparent);color:var(--fg)}
+.chip-pri .nm{font-weight:600}.yrs-pill{background:var(--acc);color:var(--acc-fg);font-size:.72rem;font-weight:700;border-radius:99px;padding:1px 8px;white-space:nowrap}
