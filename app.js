@@ -18,9 +18,9 @@ function render(p) {
   p.projects.forEach(x => { const c = el('article', 'card'); c.append(el('h3', null, x.name), el('p', null, x.description)); const u = el('ul', 'tags'); (x.tech || []).forEach(t => u.append(el('li', null, t))); c.append(u);
     if (x.link) { const a = el('a', null, 'View project →'); a.href = x.link; a.rel = 'noopener'; c.append(a); } $('#projects-list').append(c); });
   p.education.forEach(x => { const c = el('div', 'card'); c.append(el('h3', null, x.degree), el('p', 'muted', `${x.institution} · ${x.period}`)); $('#edu-list').append(c); });
-  $('#availability').textContent = p.contact.availability || '';
-  const m = $('#email'); m.textContent = `Email ${p.contact.email}`; m.href = `mailto:${p.contact.email.replace(/^\[PLACEHOLDER\]\s*/, '')}`;
-  Object.entries(p.social || {}).forEach(([k, v]) => { if (!v) return; const li = el('li'); const a = el('a', null, k[0].toUpperCase() + k.slice(1)); a.href = v; a.rel = 'noopener'; li.append(a); $('#social').append(li); });
+  const em = (p.contact.email || '').replace(/^\[PLACEHOLDER\]\s*/, ''); const m = $('#email'); m.textContent = em; m.href = `mailto:${em}`;
+  const short = u => u.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '');
+  [['github', '#gh', '#row-github'], ['linkedin', '#li', '#row-linkedin']].forEach(([k, a, r]) => { const v = p.social?.[k]; if (v) { $(a).href = v; $(a).textContent = short(v); $(r).hidden = false; } });
 }
 
 // ---- Chat widget ----
@@ -47,4 +47,15 @@ $('#chat-form').onsubmit = async e => {
     const d = await r.json(); status.remove(); add('bot', d.reply); history.push({ role: 'user', content: q }, { role: 'assistant', content: d.reply });
   } catch { status.remove(); add('bot', fallback()); }
   finally { clearTimeout(wake); clearTimeout(kill); }
+};
+
+$('#ct-chat').onclick = openChat;
+$('#ct-form').onsubmit = e => {
+  e.preventDefault(); const n = $('#f-name'), m = $('#f-email'), t = $('#f-msg'), note = $('#ct-note');
+  const bad = [n, m, t].find(f => !f.value.trim() || !f.checkValidity());
+  if (bad) { note.textContent = bad === m ? 'Please enter a valid email address.' : 'Please fill in all fields.'; note.className = 'ct-note err'; bad.focus(); return; }
+  const to = (P?.contact?.email || '').replace(/^\[PLACEHOLDER\]\s*/, '');
+  const subj = `Portfolio inquiry from ${n.value.trim()}`, body = `Name: ${n.value.trim()}\nEmail: ${m.value.trim()}\n\n${t.value.trim()}`;
+  location.href = `mailto:${to}?subject=${encodeURIComponent(subj)}&body=${encodeURIComponent(body)}`;
+  note.textContent = 'Your email app should open with the message ready. Just hit send!'; note.className = 'ct-note ok';
 };
