@@ -17,7 +17,7 @@ function render(p) {
   p.experience.forEach(x => { const li = el('li'); li.append(el('h3', null, `${x.role} · ${x.company}`), el('p', 'muted', x.period), el('p', null, x.summary)); $('#timeline').append(li); });
   p.projects.forEach(x => { const c = el('article', 'card'); c.append(el('h3', null, x.name), el('p', null, x.description)); const u = el('ul', 'tags'); (x.tech || []).forEach(t => u.append(el('li', null, t))); c.append(u);
     if (x.link) { const a = el('a', null, 'View project →'); a.href = x.link; a.rel = 'noopener'; c.append(a); } $('#projects-list').append(c); });
-  p.education.forEach(x => { const c = el('div', 'card'); c.append(el('h3', null, x.degree), el('p', 'muted', `${x.institution} · ${x.period}`)); $('#edu-list').append(c); });
+  p.education.forEach(x => { const c = el('div', 'card'); c.append(el('h3', null, x.degree), el('p', 'muted', `${x.institution} · ${x.period}`)); if (x.grade) c.append(el('p', null, x.grade)); $('#edu-list').append(c); });
   const em = (p.contact.email || '').replace(/^\[PLACEHOLDER\]\s*/, ''); const m = $('#email'); m.textContent = em; m.href = `mailto:${em}`;
   const short = u => u.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '');
   [['github', '#gh', '#row-github'], ['linkedin', '#li', '#row-linkedin']].forEach(([k, a, r]) => { const v = p.social?.[k]; if (v) { $(a).href = v; $(a).textContent = short(v); $(r).hidden = false; } });

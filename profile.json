@@ -75,9 +75,16 @@
   ],
   "education": [
     {
-      "degree": "[PLACEHOLDER] B.E. Computer Science",
-      "institution": "[PLACEHOLDER] Example University",
-      "period": "2013 - 2017"
+      "degree": "Master of Computer Applications (MCA)",
+      "institution": "National Institute of Technology, Tiruchirappalli",
+      "period": "2016 – 2019",
+      "grade": "CGPA 8.62"
+    },
+    {
+      "degree": "Bachelor of Computer Applications (BCA)",
+      "institution": "Nalanda College, Biharsharif",
+      "period": "2012 – 2015",
+      "grade": "Percentage 73.87%"
     }
   ],
   "contact": {
