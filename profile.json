@@ -1,5 +1,4 @@
 {
-  "_note": "PLACEHOLDER CONTENT - replace every value marked [PLACEHOLDER] with Uday's real details, then run ./sync.sh",
   "name": "Uday Kumar",
   "headline": "Technology Lead | Software Engineer (7+ Y Exp) | NIT Trichy",
   "location": "Bengaluru, Karnataka, India",
@@ -148,7 +147,7 @@
   "contact": {
     "email": "uday28kumar@gmail.com",
     "phone": "+91 76 7799 7655",
-    "availability": "[PLACEHOLDER] Open to interesting opportunities"
+    "availability": "I'm open to discussing interesting roles."
   },
   "social": {
     "github": "https://github.com/uday28kumar",
@@ -158,7 +157,7 @@
   "faq": [
     {
       "q": "Are you open to new opportunities?",
-      "a": "[PLACEHOLDER] Yes, I'm open to discussing interesting roles."
+      "a": "I'm open to discussing interesting roles."
     }
   ],
   "aboutHighlights": [
