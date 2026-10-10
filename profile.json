@@ -8,9 +8,18 @@
     {
       "group": "Languages",
       "items": [
-        "[PLACEHOLDER] Kotlin",
-        "JavaScript",
-        "Python"
+        {
+          "name": "Java",
+          "years": "7+"
+        },
+        {
+          "name": "JavaScript",
+          "years": "5+"
+        },
+        "C++",
+        "Python",
+        "SQL",
+        "GraphQL"
       ]
     },
     {

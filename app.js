@@ -13,7 +13,7 @@ function render(p) {
   $('#brand').textContent = p.name; $('#name').textContent = p.name; $('#foot-name').textContent = p.name;
   $('#headline').textContent = p.headline; $('#location').textContent = p.location || ''; renderAbout(p);
   $('#year').textContent = new Date().getFullYear();
-  p.skills.forEach(g => { const c = el('div', 'card'); c.append(el('h3', null, g.group)); const u = el('ul', 'tags'); g.items.forEach(i => u.append(el('li', null, i))); c.append(u); $('#skills-list').append(c); });
+  p.skills.forEach(g => { const c = el('div', 'card'); c.append(el('h3', null, g.group)); const u = el('ul', 'tags'); g.items.forEach(i => { if (typeof i === 'string') return u.append(el('li', null, i)); const li = el('li', null, i.name); if (i.years) li.append(el('span', 'yrs', ` · ${i.years} yrs`)); u.append(li); }); c.append(u); $('#skills-list').append(c); });
   p.experience.forEach(x => { const li = el('li'); li.append(el('h3', null, `${x.role} · ${x.company}`), el('p', 'muted', x.period), el('p', null, x.summary)); $('#timeline').append(li); });
   p.projects.forEach(x => { const c = el('article', 'card'); c.append(el('h3', null, x.name), el('p', null, x.description)); const u = el('ul', 'tags'); (x.tech || []).forEach(t => u.append(el('li', null, t))); c.append(u);
     if (x.link) { const a = el('a', null, 'View project →'); a.href = x.link; a.rel = 'noopener'; c.append(a); } $('#projects-list').append(c); });
