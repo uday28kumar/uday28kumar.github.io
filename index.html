@@ -3,11 +3,17 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Portfolio</title><meta name="description" content="Personal portfolio">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&family=Patrick+Hand&display=swap">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="style.css">
-<script>document.documentElement.dataset.theme=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')</script>
+<script>document.documentElement.dataset.theme=localStorage.getItem('theme')||'dark'</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div class="bg" aria-hidden="true"><span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span><span class="grid-dots"></span><span class="vignette"></span></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="chalk" x="-5%" y="-10%" width="110%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.2" result="d"/><feComponentTransfer in="n" result="m"><feFuncA type="discrete" tableValues="0 1 1 1 1 0 1 1"/></feComponentTransfer><feComposite in="d" in2="m" operator="in"/></filter></svg>
 <header class="nav"><div class="wrap nav-in">
   <a href="#top" class="brand" id="brand"></a>
   <nav aria-label="Primary"><ul>
@@ -16,7 +22,7 @@
   <button id="theme" class="icon-btn" aria-label="Toggle dark mode">◐</button>
 </div></header>
 <main id="main">
-  <section id="top" class="hero wrap"><p class="eyebrow">Hi, I'm</p><h1 id="name"></h1><p id="headline" class="lead"></p><p id="location" class="muted"></p>
+  <section id="top" class="hero wrap"><p class="eyebrow">Hi, I'm</p><h1 id="name"></h1><p class="role mono" aria-live="off"><span class="role-pre">&gt;</span> <span id="role"></span><span class="caret" aria-hidden="true"></span></p><p id="headline" class="lead"></p><p id="location" class="muted"></p>
     <div class="cta"><a class="btn" href="#contact">Get in touch</a><button class="btn ghost" id="hero-chat">Ask my assistant</button></div></section>
   <section id="about" class="wrap"><h2>About</h2><p id="about-text"></p></section>
   <section id="skills" class="wrap"><h2>Skills</h2><div id="skills-list" class="grid3"></div></section>
@@ -48,5 +54,5 @@
   <form id="chat-form"><label for="chat-input" class="sr">Your question</label>
     <input id="chat-input" autocomplete="off" placeholder="Ask about my work, skills…" maxlength="500"><button class="btn">Send</button></form>
 </section>
-<script src="config.js"></script><script src="app.js"></script>
+<script src="config.js"></script><script src="app.js"></script><script src="fx.js"></script>
 </body></html>
