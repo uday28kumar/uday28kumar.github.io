@@ -63,6 +63,18 @@
         "Developed and deployed over 50 features and bug fixes for trading applications.",
         "Provided support for trading servers for over 50 weeks."
       ]
+    },
+    {
+      "role": "Software Engineer",
+      "company": "Deltek | Replicon",
+      "period": "Aug 2019 – Jul 2022",
+      "location": "Bengaluru, India",
+      "summary": "",
+      "bullets": [
+        "Played a key role in designing and developing the Project Requests (Portfolio Management) module, with 60% involvement in the UI and 20% in the backend.",
+        "Designed and developed the Project's Bill Plan feature, contributing equally to both UI and backend (50% each).",
+        "Involved in Billing Rate UI, Auto Reference Number, and Tax Profile feature development."
+      ]
     }
   ],
   "projects": [
