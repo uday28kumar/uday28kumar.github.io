@@ -198,3 +198,8 @@ h2.reveal{opacity:1;transform:none;clip-path:inset(0 100% 0 0);transition:clip-p
 .msg.streaming::after{content:"";display:inline-block;width:.5em;height:1em;margin-left:2px;vertical-align:-.12em;background:var(--chalk);opacity:.8;border-radius:2px;animation:blink 1s steps(1) infinite}
 
 mark.hl-head{background:none;color:var(--acc);font-weight:700;padding:0}
+
+/* ===== Experience bullets ===== */
+.chalk-list{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:6px}
+.timeline .chalk-list li{position:relative;padding:0 0 0 22px}
+.timeline .chalk-list li::before{content:"";position:absolute;left:2px;top:.62em;width:11px;height:3px;border-radius:2px;background:var(--acc);box-shadow:none;border:0;opacity:.85;transform:rotate(-8deg)}

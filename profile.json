@@ -50,16 +50,19 @@
   ],
   "experience": [
     {
-      "role": "[PLACEHOLDER] Senior Developer",
-      "company": "Example Corp",
-      "period": "2022 - Present",
-      "summary": "[PLACEHOLDER] Describe your responsibilities and impact."
-    },
-    {
-      "role": "[PLACEHOLDER] Developer",
-      "company": "Sample Ltd",
-      "period": "2019 - 2022",
-      "summary": "[PLACEHOLDER] Describe your responsibilities and impact."
+      "role": "Senior Software Engineer",
+      "company": "BlackRock",
+      "period": "Aug 2022 – Present",
+      "location": "Bengaluru, India",
+      "summary": "",
+      "bullets": [
+        "Spearheaded the end-to-end design and development of the Trade API, contributing to over 90% of the project.",
+        "Designed and developed the pagination feature in Trade API.",
+        "Developed and integrated a Trade Ignite Cache to enhance Trade API performance by over 90%.",
+        "Designed and developed the traffic routing system to distribute API load to TradeQueryServer and TradePostingServer.",
+        "Developed and deployed over 50 features and bug fixes for trading applications.",
+        "Provided support for trading servers for over 50 weeks."
+      ]
     }
   ],
   "projects": [
