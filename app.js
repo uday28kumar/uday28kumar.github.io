@@ -55,11 +55,13 @@ $('#chat-form').onsubmit = async e => {
     if (!r.ok) throw new Error(r.status);
     let reply = '';
     if ((r.headers.get('Content-Type') || '').startsWith('text/plain') && r.body) {
-      const rd = r.body.getReader(), dec = new TextDecoder(); let m = null;
+      const rd = r.body.getReader(), dec = new TextDecoder(); let m = null, shown = 0, pump = null, done = false;
+      // Smoothly reveal buffered text so fast chunks still look hand-written.
+      const drain = async () => { while (!done || shown < reply.length) { if (shown < reply.length) { const back = reply.length - shown; shown += Math.max(1, Math.ceil(back / 18)); m.textContent = reply.slice(0, shown); log.scrollTop = log.scrollHeight; } await new Promise(res => setTimeout(res, 22)); } };
       for (;;) { const { done, value } = await rd.read(); if (done) break; const t = dec.decode(value, { stream: true }); if (!t) continue;
         if (!m) { clearTimeout(wake); status.remove(); m = add('bot streaming', ''); }
-        reply += t; m.textContent = reply; log.scrollTop = log.scrollHeight; }
-      reply = reply.trim(); if (!m) throw new Error('empty'); m.textContent = reply; m.classList.remove('streaming');
+        reply += t; if (RM) { m.textContent = reply; log.scrollTop = log.scrollHeight; } else if (!pump) pump = drain(); }
+      if (!m) throw new Error('empty'); done = true; if (pump) await pump; reply = reply.trim(); m.textContent = reply; m.classList.remove('streaming');
     } else {
       const d = await r.json(); reply = d.reply; clearTimeout(wake); status.remove();
       if (RM) add('bot', reply); else { const m = add('bot streaming', ''); const words = reply.split(/(\s+)/); const delay = words.length > 120 ? 12 : 30;
