@@ -11,7 +11,7 @@ fetch('profile.json').then(r => r.json()).then(p => { P = p; render(p); }).catch
 function render(p) {
   document.title = `${p.name} | Portfolio`;
   $('#brand').textContent = p.name; $('#name').textContent = p.name; $('#foot-name').textContent = p.name;
-  $('#headline').textContent = p.headline; $('#location').textContent = p.location || ''; renderAbout(p);
+  renderHL($('#headline'), p.headline || '', p.headlineHighlights, 'hl-head'); $('#location').textContent = p.location || ''; renderAbout(p);
   $('#year').textContent = new Date().getFullYear();
   p.skills.forEach(g => { const c = el('div', 'card'); c.append(el('h3', null, g.group)); const pri = g.items.filter(i => typeof i === 'object' && i.years), rest = g.items.filter(i => !(typeof i === 'object' && i.years));
     if (pri.length) { const pu = el('ul', 'tags primary'); pri.forEach(i => { const li = el('li', 'chip-pri'); li.append(el('span', 'nm', i.name), el('span', 'yrs-pill', `${i.years} yrs`)); pu.append(li); }); c.append(pu); }
@@ -82,5 +82,13 @@ function renderAbout(p) {
   const re = new RegExp(`(?<![\\w.])(${terms.map(esc).join('|')})(?![\\w])`, 'g');
   let last = 0;
   for (const m of text.matchAll(re)) { box.append(document.createTextNode(text.slice(last, m.index)), el('mark', 'hl', m[0])); last = m.index + m[0].length; }
+  box.append(document.createTextNode(text.slice(last)));
+}
+
+function renderHL(box, text, list, cls) {
+  const terms = (list || []).filter(Boolean).sort((x, y) => y.length - x.length); box.textContent = '';
+  if (!terms.length) { box.textContent = text; return; }
+  const re = new RegExp(`(${terms.map(s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')})`, 'g'); let last = 0;
+  for (const m of text.matchAll(re)) { box.append(document.createTextNode(text.slice(last, m.index)), el('mark', cls, m[0])); last = m.index + m[0].length; }
   box.append(document.createTextNode(text.slice(last)));
 }
