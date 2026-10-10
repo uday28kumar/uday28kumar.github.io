@@ -205,3 +205,6 @@ mark.hl-head{background:none;color:var(--acc);font-weight:700;padding:0}
 .timeline .chalk-list li::before{content:"";position:absolute;left:2px;top:.62em;width:11px;height:3px;border-radius:2px;background:var(--acc);box-shadow:none;border:0;opacity:.85;transform:rotate(-8deg)}
 
 .timeline h3 .co{color:var(--acc)}.timeline h3 .sep{color:var(--muted)}
+
+.proj-co{margin:0 0 4px;color:var(--acc);font-size:.9rem;letter-spacing:.04em}
+#projects-list .card{display:flex;flex-direction:column}#projects-list .card .tags{margin-top:auto;padding-top:8px}

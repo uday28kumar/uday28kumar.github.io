@@ -19,7 +19,7 @@ function render(p) {
   p.experience.forEach(x => { const li = el('li'); const h = el('h3'); h.append(document.createTextNode(x.role), el('span', 'sep', ' · '), el('span', 'co', x.company)); li.append(h, el('p', 'muted', [x.period, x.location].filter(Boolean).join(' · ')));
     if (x.summary) li.append(el('p', null, x.summary));
     if (x.bullets?.length) { const u = el('ul', 'chalk-list'); x.bullets.forEach(b => u.append(el('li', null, b))); li.append(u); } $('#timeline').append(li); });
-  p.projects.forEach(x => { const c = el('article', 'card'); c.append(el('h3', null, x.name), el('p', null, x.description)); const u = el('ul', 'tags'); (x.tech || []).forEach(t => u.append(el('li', null, t))); c.append(u);
+  p.projects.forEach(x => { const c = el('article', 'card'); if (x.company) c.append(el('p', 'proj-co', x.company)); c.append(el('h3', null, x.name), el('p', null, x.description)); const u = el('ul', 'tags'); (x.tech || []).forEach(t => u.append(el('li', null, t))); c.append(u);
     if (x.link) { const a = el('a', null, 'View project →'); a.href = x.link; a.rel = 'noopener'; c.append(a); } $('#projects-list').append(c); });
   p.education.forEach(x => { const c = el('div', 'edu'); const t = el('div', 'edu-logo');
     const ini = () => { t.textContent = x.institution.split(/[\s,]+/).filter(w => /^[A-Z]/.test(w)).slice(0, 2).map(w => w[0]).join(''); t.classList.add('ini'); };

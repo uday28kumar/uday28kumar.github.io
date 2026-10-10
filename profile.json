@@ -79,29 +79,52 @@
   ],
   "projects": [
     {
-      "name": "Counter",
-      "description": "[PLACEHOLDER] A lightweight Android tally counter built with Kotlin and Jetpack Compose.",
+      "name": "Trade API",
+      "company": "BlackRock",
+      "description": "Trade API is a REST API offering endpoints to retrieve, filter, and manage trade data. Users can fetch trades using specific filters or criteria, and use post, batch post, cancel, and batch cancel endpoints to create, update, or cancel trades.",
       "tech": [
-        "Kotlin",
-        "Compose"
+        "Java",
+        "Protobuf",
+        "Sybase",
+        "Redis",
+        "Ignite"
       ],
       "link": ""
     },
     {
-      "name": "Portfolio + AI assistant",
-      "description": "This site, with a free open-source chatbot running on a Hugging Face Space.",
+      "name": "Transactional Trade Cache",
+      "company": "BlackRock",
+      "description": "Transactional Trade Cache is a caching technique that boosts Trade API performance, reducing retrieve API response time from 100 ms to 1 ms and efficiently handling over 1 million requests daily.",
       "tech": [
-        "HTML",
-        "FastAPI",
-        "Qwen2.5"
+        "Redis",
+        "Ignite",
+        "Java"
       ],
       "link": ""
     },
     {
-      "name": "[PLACEHOLDER] Project Three",
-      "description": "[PLACEHOLDER] Short project description.",
+      "name": "Project Portfolio Management",
+      "company": "Deltek | Replicon",
+      "description": "Project Portfolio Management (PPM) is a solution designed to streamline project costing and management, enabling organizations to deliver projects on time and within budget. It provides real-time visibility into project and program costs by tracking time spent by resources.",
       "tech": [
-        "Python"
+        "JavaScript",
+        "React",
+        "Node.js",
+        "GraphQL",
+        "Postgres"
+      ],
+      "link": ""
+    },
+    {
+      "name": "Project Bill Plans & Tax Profile",
+      "company": "Deltek | Replicon",
+      "description": "Project Bill Plans is designed to manage project billing with various plan options, such as daily or recurring schedules. The Tax Profile feature allows you to apply the appropriate taxes to project billing for different clients and regions.",
+      "tech": [
+        "JavaScript",
+        "React",
+        "Node.js",
+        "GraphQL",
+        "Postgres"
       ],
       "link": ""
     }
@@ -136,10 +159,6 @@
     {
       "q": "Are you open to new opportunities?",
       "a": "[PLACEHOLDER] Yes, I'm open to discussing interesting roles."
-    },
-    {
-      "q": "What are you working on now?",
-      "a": "[PLACEHOLDER] An Android counter app and this portfolio."
     }
   ],
   "aboutHighlights": [
