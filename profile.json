@@ -1,8 +1,8 @@
 {
   "_note": "PLACEHOLDER CONTENT - replace every value marked [PLACEHOLDER] with Uday's real details, then run ./sync.sh",
   "name": "Uday Kumar",
-  "headline": "[PLACEHOLDER] Software Engineer | Building useful things",
-  "location": "[PLACEHOLDER] Bengaluru, India",
+  "headline": "Technology Lead | Software Engineer (7+ Y Exp) | NIT Trichy",
+  "location": "Bengaluru, Karnataka, India",
   "about": "I'm a Software Engineer and Technical Lead with 7+ years of experience architecting scalable distributed systems and mission-critical enterprise applications. Proficient in Java, Spring Boot, React, Node.js, and GraphQL, I specialize in end-to-end software delivery, robust API design, and performance optimization. My track record spans leading engineering teams and building high-impact platforms, including Trading APIs, Billing, and Revenue Recognition solutions, from concept to production. Holding an MCA from NIT Trichy, I bring a strong analytical foundation and a passion for technical strategy, mentorship, and solving complex engineering challenges.",
   "skills": [
     {
@@ -109,7 +109,7 @@
   ],
   "contact": {
     "email": "uday28kumar@gmail.com",
-    "phone": "",
+    "phone": "+91 76 7799 7655",
     "availability": "[PLACEHOLDER] Open to interesting opportunities"
   },
   "social": {

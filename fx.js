@@ -20,11 +20,11 @@
   document.addEventListener('pointermove', e => { const c = e.target.closest?.('.card,.edu,.ct-card'); if (!c) return; const r = c.getBoundingClientRect();
     c.style.setProperty('--mx', `${e.clientX - r.left}px`); c.style.setProperty('--my', `${e.clientY - r.top}px`); }, { passive: true });
 
-  // Rotating role text (typed)
-  const out = document.getElementById('role'); const roles = (window.PORTFOLIO_CONFIG?.ROLES) || ['Software Engineer', 'Technical Lead'];
+  // Chalk handwriting role line: write left-to-right, hold, erase, next
+  const out = document.getElementById('role'); const roles = (window.PORTFOLIO_CONFIG?.ROLES) || ['Software Engineer', 'Technology Lead'];
   if (RM) { out.textContent = roles.join(' · '); return; }
-  let r = 0, i = 0, del = false;
-  (function tick() { const w = roles[r]; out.textContent = w.slice(0, i); let d = del ? 45 : 85;
-    if (!del && i === w.length) { del = true; d = 1800; } else if (del && i === 0) { del = false; r = (r + 1) % roles.length; d = 350; } else i += del ? -1 : 1;
-    setTimeout(tick, d); })();
+  let r = 0;
+  const step = () => { out.className = ''; out.textContent = roles[r]; void out.offsetWidth; out.className = 'chalk-write';
+    setTimeout(() => { out.className = 'chalk-erase'; setTimeout(() => { r = (r + 1) % roles.length; step(); }, 900); }, 1600 + 2200); };
+  step();
 })();

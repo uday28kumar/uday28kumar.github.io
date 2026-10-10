@@ -26,6 +26,7 @@ function render(p) {
     if (x.period) b.append(el('p', 'muted', x.period)); if (x.grade) b.append(el('p', 'edu-grade', `Grade: ${x.grade}`));
     c.append(t, b); $('#edu-list').append(c); });
   const em = (p.contact.email || '').replace(/^\[PLACEHOLDER\]\s*/, ''); const m = $('#email'); m.textContent = em; m.href = `mailto:${em}`;
+  const ph = (p.contact.phone || '').replace(/^\[PLACEHOLDER\]\s*/, ''); if (ph) { $('#tel').textContent = ph; $('#tel').href = 'tel:' + ph.replace(/[^\d+]/g, ''); $('#row-phone').hidden = false; }
   const short = u => u.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '');
   [['github', '#gh', '#row-github'], ['linkedin', '#li', '#row-linkedin']].forEach(([k, a, r]) => { const v = p.social?.[k]; if (v) { $(a).href = v; $(a).textContent = short(v); $(r).hidden = false; } });
 }
