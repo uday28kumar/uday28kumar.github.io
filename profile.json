@@ -6,7 +6,7 @@
   "about": "I'm a Software Engineer and Technical Lead with 7+ years of experience architecting scalable distributed systems and mission-critical enterprise applications. Proficient in Java, Spring Boot, React, Node.js, and GraphQL, I specialize in end-to-end software delivery, robust API design, and performance optimization. My track record spans leading engineering teams and building high-impact platforms, including Trading APIs, Billing, and Revenue Recognition solutions, from concept to production. Holding an MCA from NIT Trichy, I bring a strong analytical foundation and a passion for technical strategy, mentorship, and solving complex engineering challenges.",
   "skills": [
     {
-      "group": "Languages",
+      "group": "Languages & Frameworks",
       "items": [
         {
           "name": "Java",
@@ -19,23 +19,23 @@
         "C++",
         "Python",
         "SQL",
-        "GraphQL"
-      ]
-    },
-    {
-      "group": "Frameworks",
-      "items": [
-        "[PLACEHOLDER] Jetpack Compose",
-        "React",
-        "FastAPI"
+        "GraphQL",
+        "Spring",
+        "Spring Boot",
+        "React"
       ]
     },
     {
       "group": "Tools",
       "items": [
-        "[PLACEHOLDER] Git",
+        "Git",
+        "Jira",
+        "Linux",
+        "Azure DevOps (ADO)",
         "Docker",
-        "Linux"
+        "Confluence",
+        "JMeter",
+        "VisualVM"
       ]
     },
     {
