@@ -189,3 +189,10 @@ h2.reveal{opacity:1;transform:none;clip-path:inset(0 100% 0 0);transition:clip-p
 .chalk-erase{animation:chalkErase .9s ease-in both}
 @keyframes chalkWrite{from{clip-path:inset(-20% 100% -20% 0)}to{clip-path:inset(-20% -2% -20% 0)}}
 @keyframes chalkErase{0%{clip-path:inset(-20% -2% -20% 0);opacity:1;filter:url(#chalk) blur(0)}60%{opacity:.35;filter:url(#chalk) blur(1.5px)}100%{clip-path:inset(-20% -2% -20% 100%);opacity:0;filter:url(#chalk) blur(3px)}}
+
+/* ===== Chat writing indicator & chalk caret ===== */
+.msg.writing{display:flex;gap:5px;padding:12px 14px;align-self:flex-start}
+.msg.writing span{width:7px;height:7px;border-radius:45% 55% 50% 50%;background:var(--chalk);opacity:.3;animation:chalkDot 1.2s infinite}
+.msg.writing span:nth-child(2){animation-delay:.2s}.msg.writing span:nth-child(3){animation-delay:.4s}
+@keyframes chalkDot{0%,80%,100%{opacity:.25;transform:translateY(0)}40%{opacity:.9;transform:translateY(-3px)}}
+.msg.streaming::after{content:"";display:inline-block;width:.5em;height:1em;margin-left:2px;vertical-align:-.12em;background:var(--chalk);opacity:.8;border-radius:2px;animation:blink 1s steps(1) infinite}

@@ -46,14 +46,27 @@ $('#chat-form').onsubmit = async e => {
   e.preventDefault(); const inp = $('#chat-input'); const q = inp.value.trim(); if (!q) return; inp.value = ''; add('user', q);
   const url = (CFG.CHAT_API_URL || '').replace(/\/$/, '');
   if (!url) { const e = P?.contact?.email?.replace(/^\[PLACEHOLDER\]\s*/, '') || 'email'; add('bot', `My AI assistant is coming soon! Meanwhile, feel free to email me at ${e}.`); return; }
-  const status = add('status', 'Thinking…');
-  const wake = setTimeout(() => status.textContent = '☕ The assistant is waking up (free servers sleep when idle). This can take up to a minute…', 6000);
+  const status = add('status writing', ''); status.setAttribute('aria-label', 'writing'); status.innerHTML = '<span></span><span></span><span></span>';
+  const wake = setTimeout(() => { status.className = 'msg status'; status.textContent = '☕ The assistant is waking up. This can take a moment…'; }, 8000);
   const ctrl = new AbortController(); const kill = setTimeout(() => ctrl.abort(), CFG.REQUEST_TIMEOUT_MS || 90000);
+  const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
   try {
-    const r = await fetch(url + '/api/chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ message: q, history: history.slice(-6) }), signal: ctrl.signal });
+    const r = await fetch(url + '/api/chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ message: q, history: history.slice(-6), stream: true }), signal: ctrl.signal });
     if (!r.ok) throw new Error(r.status);
-    const d = await r.json(); status.remove(); add('bot', d.reply); history.push({ role: 'user', content: q }, { role: 'assistant', content: d.reply });
-  } catch { status.remove(); add('bot', fallback()); }
+    let reply = '';
+    if ((r.headers.get('Content-Type') || '').startsWith('text/plain') && r.body) {
+      const rd = r.body.getReader(), dec = new TextDecoder(); let m = null;
+      for (;;) { const { done, value } = await rd.read(); if (done) break; const t = dec.decode(value, { stream: true }); if (!t) continue;
+        if (!m) { clearTimeout(wake); status.remove(); m = add('bot streaming', ''); }
+        reply += t; m.textContent = reply; log.scrollTop = log.scrollHeight; }
+      reply = reply.trim(); if (!m) throw new Error('empty'); m.textContent = reply; m.classList.remove('streaming');
+    } else {
+      const d = await r.json(); reply = d.reply; clearTimeout(wake); status.remove();
+      if (RM) add('bot', reply); else { const m = add('bot streaming', ''); const words = reply.split(/(\s+)/); const delay = words.length > 120 ? 12 : 30;
+        for (const w of words) { m.textContent += w; log.scrollTop = log.scrollHeight; if (w.trim()) await new Promise(res => setTimeout(res, delay)); } m.classList.remove('streaming'); }
+    }
+    history.push({ role: 'user', content: q }, { role: 'assistant', content: reply });
+  } catch { status.remove(); log.querySelector('.msg.streaming')?.classList.remove('streaming'); add('bot', fallback()); }
   finally { clearTimeout(wake); clearTimeout(kill); }
 };
 
