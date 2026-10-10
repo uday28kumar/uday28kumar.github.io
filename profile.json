@@ -3,7 +3,7 @@
   "name": "Uday Kumar",
   "headline": "[PLACEHOLDER] Software Engineer | Building useful things",
   "location": "[PLACEHOLDER] Bengaluru, India",
-  "about": "I'm a Software Engineer and Technical Lead with over seven years of experience architecting scalable distributed systems and mission-critical enterprise applications. Proficient in Java, Spring Boot, React, Node.js, and GraphQL, I specialize in end-to-end software delivery, robust API design, and performance optimization. My track record spans leading engineering teams and building high-impact platforms, including Trading APIs, Billing, and Revenue Recognition solutions, from concept to production. Holding an MCA from NIT Trichy, I bring a strong analytical foundation and a passion for technical strategy, mentorship, and solving complex engineering challenges.",
+  "about": "I'm a Software Engineer and Technical Lead with 7+ years of experience architecting scalable distributed systems and mission-critical enterprise applications. Proficient in Java, Spring Boot, React, Node.js, and GraphQL, I specialize in end-to-end software delivery, robust API design, and performance optimization. My track record spans leading engineering teams and building high-impact platforms, including Trading APIs, Billing, and Revenue Recognition solutions, from concept to production. Holding an MCA from NIT Trichy, I bring a strong analytical foundation and a passion for technical strategy, mentorship, and solving complex engineering challenges.",
   "skills": [
     {
       "group": "Languages",
@@ -110,20 +110,10 @@
     }
   ],
   "aboutHighlights": [
-    "Software Engineer",
-    "Technical Lead",
-    "over seven years of experience",
-    "scalable distributed systems",
-    "Java",
-    "Spring Boot",
-    "React",
-    "Node.js",
-    "GraphQL",
-    "robust API design",
-    "performance optimization",
+    "Software Engineer and Technical Lead",
+    "7+ years",
+    "Java, Spring Boot, React, Node.js, and GraphQL",
     "Trading APIs, Billing, and Revenue Recognition",
-    "MCA",
-    "NIT Trichy",
-    "mentorship"
+    "MCA from NIT Trichy"
   ]
 }
