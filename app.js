@@ -16,7 +16,7 @@ function render(p) {
   p.skills.forEach(g => { const c = el('div', 'card'); c.append(el('h3', null, g.group)); const pri = g.items.filter(i => typeof i === 'object' && i.years), rest = g.items.filter(i => !(typeof i === 'object' && i.years));
     if (pri.length) { const pu = el('ul', 'tags primary'); pri.forEach(i => { const li = el('li', 'chip-pri'); li.append(el('span', 'nm', i.name), el('span', 'yrs-pill', `${i.years} yrs`)); pu.append(li); }); c.append(pu); }
     const u = el('ul', 'tags'); rest.forEach(i => u.append(el('li', null, typeof i === 'string' ? i : i.name))); if (rest.length) c.append(u); $('#skills-list').append(c); });
-  p.experience.forEach(x => { const li = el('li'); li.append(el('h3', null, `${x.role} · ${x.company}`), el('p', 'muted', [x.period, x.location].filter(Boolean).join(' · ')));
+  p.experience.forEach(x => { const li = el('li'); const h = el('h3'); h.append(document.createTextNode(x.role), el('span', 'sep', ' · '), el('span', 'co', x.company)); li.append(h, el('p', 'muted', [x.period, x.location].filter(Boolean).join(' · ')));
     if (x.summary) li.append(el('p', null, x.summary));
     if (x.bullets?.length) { const u = el('ul', 'chalk-list'); x.bullets.forEach(b => u.append(el('li', null, b))); li.append(u); } $('#timeline').append(li); });
   p.projects.forEach(x => { const c = el('article', 'card'); c.append(el('h3', null, x.name), el('p', null, x.description)); const u = el('ul', 'tags'); (x.tech || []).forEach(t => u.append(el('li', null, t))); c.append(u);
