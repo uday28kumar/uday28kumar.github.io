@@ -37,6 +37,15 @@
         "Docker",
         "Linux"
       ]
+    },
+    {
+      "group": "Architecture & Design",
+      "items": [
+        "System Design",
+        "Distributed Systems",
+        "API Design",
+        "Microservices"
+      ]
     }
   ],
   "experience": [
