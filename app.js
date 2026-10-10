@@ -11,7 +11,7 @@ fetch('profile.json').then(r => r.json()).then(p => { P = p; render(p); }).catch
 function render(p) {
   document.title = `${p.name} | Portfolio`;
   $('#brand').textContent = p.name; $('#name').textContent = p.name; $('#foot-name').textContent = p.name;
-  $('#headline').textContent = p.headline; $('#location').textContent = p.location || ''; $('#about-text').textContent = p.about;
+  $('#headline').textContent = p.headline; $('#location').textContent = p.location || ''; renderAbout(p);
   $('#year').textContent = new Date().getFullYear();
   p.skills.forEach(g => { const c = el('div', 'card'); c.append(el('h3', null, g.group)); const u = el('ul', 'tags'); g.items.forEach(i => u.append(el('li', null, i))); c.append(u); $('#skills-list').append(c); });
   p.experience.forEach(x => { const li = el('li'); li.append(el('h3', null, `${x.role} · ${x.company}`), el('p', 'muted', x.period), el('p', null, x.summary)); $('#timeline').append(li); });
@@ -55,3 +55,14 @@ $('#chat-form').onsubmit = async e => {
 };
 
 $('#ct-chat').onclick = openChat;
+
+function renderAbout(p) {
+  const box = $('#about-text'), text = p.about || '', terms = (p.aboutHighlights || []).filter(Boolean).sort((x, y) => y.length - x.length);
+  box.textContent = '';
+  if (!terms.length) { box.textContent = text; return; }
+  const esc = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const re = new RegExp(`(?<![\\w.])(${terms.map(esc).join('|')})(?![\\w])`, 'g');
+  let last = 0;
+  for (const m of text.matchAll(re)) { box.append(document.createTextNode(text.slice(last, m.index)), el('mark', 'hl', m[0])); last = m.index + m[0].length; }
+  box.append(document.createTextNode(text.slice(last)));
+}
