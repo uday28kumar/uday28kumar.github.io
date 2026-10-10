@@ -37,15 +37,11 @@ h1{font-size:clamp(2.2rem,6vw,3.6rem);margin:.1em 0;line-height:1.1}h2{font-size
 [data-theme=dark] .contact{background:radial-gradient(60% 50% at 15% 10%,#312e81aa 0,transparent 70%),radial-gradient(50% 50% at 90% 80%,#701a75aa 0,transparent 70%),linear-gradient(180deg,#0f0d24,#1a0f24)}
 .ct-head{text-align:center;max-width:680px;margin:0 auto 40px}.ct-eyebrow{color:var(--acc);text-transform:uppercase;letter-spacing:.12em;font-weight:700;font-size:.9rem;margin:0}
 .ct-title{font-size:clamp(2rem,5vw,3rem);line-height:1.15;font-weight:800;margin:10px 0 14px}.ct-sub{font-size:1.1rem;margin:0}
-.ct-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:24px;align-items:start}@media(max-width:760px){.ct-grid{grid-template-columns:1fr}}
+.ct-grid{max-width:560px;margin:0 auto}
 .ct-card{background:color-mix(in srgb,var(--card) 70%,transparent);backdrop-filter:blur(14px);border:1px solid color-mix(in srgb,var(--line) 70%,transparent);border-radius:24px;padding:32px;box-shadow:0 10px 40px #6d28d914;min-width:0}
 .ct-card h3{margin:0 0 12px;font-size:1.5rem}.ct-list{list-style:none;padding:0;margin:24px 0 0;display:grid;gap:16px}
 .ct-list li{display:flex;align-items:center;gap:16px;min-width:0}.ct-list li[hidden]{display:none}.ct-list a{color:var(--fg);text-decoration:none;overflow-wrap:anywhere}.ct-list a:hover{color:var(--acc)}
 .tile{flex:none;width:52px;height:52px;border-radius:14px;display:grid;place-items:center}.t1{background:#e0e7ff;color:#4f46e5}.t2{background:#f3e8ff;color:#9333ea}.t3{background:#dbeafe;color:#2563eb}
 [data-theme=dark] .t1{background:#312e81;color:#c7d2fe}[data-theme=dark] .t2{background:#4c1d95;color:#e9d5ff}[data-theme=dark] .t3{background:#1e3a8a;color:#bfdbfe}
 .linkish{background:none;border:0;padding:0;font:inherit;color:var(--acc);text-decoration:underline;cursor:pointer}
-.ct-form{display:flex;flex-direction:column}.ct-form label{text-transform:uppercase;letter-spacing:.08em;font-size:.78rem;font-weight:700;color:var(--muted);margin:14px 0 6px}.ct-form label:first-child{margin-top:0}
-.ct-form input,.ct-form textarea{width:100%;box-sizing:border-box;border:1px solid var(--line);background:color-mix(in srgb,var(--bg) 80%,transparent);color:var(--fg);border-radius:12px;padding:12px 14px;font:inherit;resize:vertical}
-.ct-send{margin-top:22px;width:100%;display:flex;justify-content:center;align-items:center;gap:10px;padding:14px;border-radius:12px;background:linear-gradient(90deg,#4f46e5,#7c3aed);color:#fff}
-.ct-note{margin:12px 0 0;font-size:.9rem;min-height:1.2em}.ct-note.ok{color:#16a34a}.ct-note.err{color:#dc2626}
 @media(max-width:480px){.ct-card{padding:22px}}

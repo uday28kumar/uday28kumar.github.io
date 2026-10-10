@@ -50,12 +50,3 @@ $('#chat-form').onsubmit = async e => {
 };
 
 $('#ct-chat').onclick = openChat;
-$('#ct-form').onsubmit = e => {
-  e.preventDefault(); const n = $('#f-name'), m = $('#f-email'), t = $('#f-msg'), note = $('#ct-note');
-  const bad = [n, m, t].find(f => !f.value.trim() || !f.checkValidity());
-  if (bad) { note.textContent = bad === m ? 'Please enter a valid email address.' : 'Please fill in all fields.'; note.className = 'ct-note err'; bad.focus(); return; }
-  const to = (P?.contact?.email || '').replace(/^\[PLACEHOLDER\]\s*/, '');
-  const subj = `Portfolio inquiry from ${n.value.trim()}`, body = `Name: ${n.value.trim()}\nEmail: ${m.value.trim()}\n\n${t.value.trim()}`;
-  location.href = `mailto:${to}?subject=${encodeURIComponent(subj)}&body=${encodeURIComponent(body)}`;
-  note.textContent = 'Your email app should open with the message ready. Just hit send!'; note.className = 'ct-note ok';
-};
