@@ -20,11 +20,7 @@
   document.addEventListener('pointermove', e => { const c = e.target.closest?.('.card,.edu,.ct-card'); if (!c) return; const r = c.getBoundingClientRect();
     c.style.setProperty('--mx', `${e.clientX - r.left}px`); c.style.setProperty('--my', `${e.clientY - r.top}px`); }, { passive: true });
 
-  // Chalk handwriting role line: write left-to-right, hold, erase, next
+  // Professional static role line
   const out = document.getElementById('role'); const roles = (window.PORTFOLIO_CONFIG?.ROLES) || ['Software Engineer', 'Technology Lead'];
-  if (RM) { out.textContent = roles.join(' · '); return; }
-  let r = 0;
-  const step = () => { out.className = ''; out.textContent = roles[r]; void out.offsetWidth; out.className = 'chalk-write';
-    setTimeout(() => { out.className = 'chalk-erase'; setTimeout(() => { r = (r + 1) % roles.length; step(); }, 900); }, 1600 + 2200); };
-  step();
+  out.textContent = roles.join(' · ');
 })();
